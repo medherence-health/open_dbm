@@ -8,24 +8,24 @@ ENV LANG C.UTF-8
 ENV LC_ALL C.UTF-8
 
 RUN apt-get update && apt-get install -y python3-pip \
-                   && apt-get install -y wget \
-                   && apt-get install -y automake --upgrade \
-                   && apt-get install -y libtool --upgrade \
-                   && apt-get -y install ffmpeg \
-                   && apt-get install -y lsb-core \
-                   && apt-get install -y libavcodec-dev \
-                   && apt-get install -y libavformat-dev \
-                   && apt-get install -y libavdevice-dev \
-                   && apt-get install -y libboost-all-dev \
-                   && apt-get install -y git \
-                   && apt-get install -y sox
+    && apt-get install -y wget \
+    && apt-get install -y automake --upgrade \
+    && apt-get install -y libtool --upgrade \
+    && apt-get -y install ffmpeg \
+    && apt-get install -y lsb-core \
+    && apt-get install -y libavcodec-dev \
+    && apt-get install -y libavformat-dev \
+    && apt-get install -y libavdevice-dev \
+    && apt-get install -y libboost-all-dev \
+    && apt-get install -y git \
+    && apt-get install -y sox
 RUN ln -sfn /usr/bin/pip3 /usr/bin/pip
 
 COPY . /app
 
-#cloning openface
+# cloning openface
 WORKDIR /app/opendbm/pkg
-RUN git clone https://github.com/AiCure/open_dbm.git -b openface
+RUN git clone https://github.com/medherence-health/open_dbm.git -b legacy/feature/openface
 
 RUN echo "Installing OpenFace..."
 WORKDIR /app/opendbm/pkg/open_dbm/OpenFace
