@@ -92,7 +92,7 @@ Make sure you have installed docker and already login to Docker Hub.
 
 If you haven't, Find the tutorial [here](https://aicure.github.io/open_dbm/docs/openface-docker-installation)
 ```bash
-docker pull opendbmteam/dbm-openface
+docker pull medherence/dbm-openface
 ```
 
 <div align="right">
