@@ -1,0 +1,47 @@
+name: Sample e2e tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # <database-document-block>
+      - name: Run e2e tests for opendbm
+        id: document
+        run: docker compose -f docker-compose.document.ci.yaml --env-file env-example-document -p ci-document up --build --exit-code-from api
+
+      - name: Copy prod.log from container to host
+        if: ${{ failure() && steps.document.conclusion == 'failure' }}
+        run: docker cp ci-document-api-1:/usr/src/app/prod.log .
+      # </database-document-block>
+
+      - name: Upload prod.log to artifacts for debugging
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: prod-logs
+          path: prod.log
+# e2e testing on github after the docker image has been built: this means after the image has been built, try to run the first program:
+# ```python
+# from opendbm import FacialActivity
+
+# #make sure Docker is active to access the model
+# model = FacialActivity()
+# path = "sample.mp4"
+# model.fit(path)
+# landmark = model.get_landmark()
+# ```
+
+# to see if the program runs well. To get install the current opendbm you can use the command:
+
+# ```bash
+# pip install -e .
+# ```
