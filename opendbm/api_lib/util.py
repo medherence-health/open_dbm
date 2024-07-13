@@ -131,7 +131,7 @@ def docker_command_dec(fn):
 
     def inner(*args, **kwargs):
         wsl_cmd, path = wsllize((args[1]))
-        openface_repo = "opendbmteam/dbm-openface"
+        openface_repo = "medherence/dbm-openface"
         check_docker_model_exist(wsl_cmd, openface_repo)
 
         create_docker = wsl_cmd + [
