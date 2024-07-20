@@ -86,6 +86,12 @@ Usually, OpenDBM is used for:
   conda create --name opendbm python=3.7
 ```
 
+```bash
+  conda activate opendbm
+  # OR
+  source activate opendbm
+```
+
 **On Linux/macOS**
 
 ```bash
