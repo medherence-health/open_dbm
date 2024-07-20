@@ -80,6 +80,12 @@ Usually, OpenDBM is used for:
 
 **Make sure to install conda first at** [anaconda](https://www.anaconda.com/)
 
+**NOTE: Python 3.7 environment is recommended**
+
+```bash
+  conda create --name opendbm python=3.7
+```
+
 **On Linux/macOS**
 
 ```bash
